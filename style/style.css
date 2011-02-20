@@ -69,10 +69,14 @@ ul li {
 	padding: 5px;
 }
 
-form {
+#searches {
 	position: absolute;											/* Position search box */
 	top: 2em;																/*		from top edge */
 	right: 2em;															/*		from right edge */
+}
+
+form {
+	margin-top: 1em;
 }
 
 form input {

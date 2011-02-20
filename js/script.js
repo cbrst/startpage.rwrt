@@ -81,7 +81,10 @@ $(document).ready(function() {
 
 		/* Add HTML code
 		================*/
-		html = html + '<li><a href="' + url + '">' + title + '</a></li>'
+		if(newwindow)
+			html = html + '<li><a href="' + url + '" target="_blank">' + title + '</a></li>'
+		else
+			html = html + '<li><a href="' + url + '">' + title + '</a></li>'
 	}
 
 	/* Add generated content to page
@@ -110,13 +113,62 @@ $(document).ready(function() {
 	});
 
 
-	/* Search Box
+	/* Search Engines
 	================*/
-	var search = '<form method="get" action="http://www.google.com/search">';
-			search = search + '<input type="text" id="g" name="q" size="31" maxlength="255" value="" />';
-			search = search +	'<input type="submit" value="Search" />';
-			search = search + '</form>';
+
+	var search = '<div id="searches">';
 	
+	if(google) {
+		var search = search + '<form method="get" action="http://www.google.com/search">',
+				search = search + '<input type="text" id="g" name="q" size="34" maxlength="255" value="" />',
+				search = search +	'<input type="submit" value="Google" />',
+				search = search + '</form>';
+	}
+
+	if(yahoo) {
+		var search = search + '<form method="get" action="http://search.yahoo.com/search">',
+				search = search + '<input type="text" id="y" name="p" size="35" maxlength="255" value="" />',
+				search = search +	'<input type="submit" value="Yahoo" />',
+				search = search + '</form>';
+	}
+
+	if(wikipedia) {
+		var search = search + '<form method="get" action="http://www.wikipedia.org/w/index.php">',
+				search = search + '<input type="text" id="w" name="search" size="31" maxlength="255" value="" />',
+				search = search +	'<input type="submit" value="Wikipedia" />',
+				search = search + '</form>';
+	}
+
+	if(dictcc) {
+		var search = search + '<form method="get" action="http://www.dict.cc/">',
+				search = search + '<input type="text" id="dcc" name="s" size="33" maxlength="255" value="" />',
+				search = search +	'<input type="submit" value="dict.cc" />',
+				search = search + '</form>';
+	}
+
+	if(leo) {
+		var search = search + '<form method="get" action="http://dict.leo.org/">',
+				search = search + '<input type="text" id="l" name="search" size="37" maxlength="255" value="" />',
+				search = search +	'<input type="submit" value="leo" />',
+				search = search + '</form>';
+	}
+
+	if(flickr) {
+		var search = search + '<form method="get" action="http://www.flickr.com/search">',
+				search = search + '<input type="text" id="da" name="q" size="34" maxlength="255" value="" />',
+				search = search +	'<input type="submit" value="flickr" />',
+				search = search + '</form>';
+	}
+
+	if(deviantart) {
+		var search = search + '<form method="get" action="http://browse.deviantart.com/">',
+				search = search + '<input type="text" id="da" name="q" size="30" maxlength="255" value="" />',
+				search = search +	'<input type="submit" value="deviantART" />',
+				search = search + '</form>';
+	}
+
+	var search = search + '</div>';
+
 	/* Add to page
 	================*/
 	$('body').append(search);

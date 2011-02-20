@@ -1,16 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<!--
-	Startpage Rewrite
+/**
+	Startpage Reworked
 	==================
 
 	by Christian Brassat,
--->
+	reusing code by Jukka Svahn
+*/
 
-<!--
+/**
 	Released under MIT License
 	
-	Copyright (c) 2010 Christian Brassat
+	Copyright (c) 2010 Jukka Svahn, Christian Brassat
+	<http://rahforum.biz>
 	<http://crshd.cc>
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,48 +30,25 @@
 	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 	THE SOFTWARE.
--->
+*/
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="style/style.css" type="text/css" />
-	<script type="text/javascript" src="js/jquery-1.5.min.js"></script>
-	<script type="text/javascript" src="settings.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
+$(document).ready(function() {
 
-<!-- Page Title -->
-	<title>Start Page</title>
+/**
+	Simple configuration using (mostly) true/false settings. Use "true" to enable
+	feature, "false" to disable feature.
+*/
 
-</head>
-<body>
+	// Open in new window_tab
+	newwindow = true;
 
-<!--
-	URLs go here, in the following format:
+	// Enable/disable various search engines
+	google = true;
+	yahoo = false;
+	wikipedia = false;
+	dictcc = false;
+	leo = false;
+	flickr = false;
+	deviantart = false;
 
-Heading Text
-http://www.example.com || Title
-
-Second Heading Text
-http://www.example.com || Another Title
--->
-
-Title 1
-http://google.com || Google yeah
-http://deviantart.com || dA
-
-Title 2
-http://pixelfuckers.org || PF
-
-Coconut
-http://newgrounds.com || NG
-
-New Block
-http://lolwut.com || Lol, Wut?
-
-Bananas
-http://crshd.cc || crshd.cc
-http://rahforum.biz || rahforum.biz
-
-</body>
-</html>
+});
