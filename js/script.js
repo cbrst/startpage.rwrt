@@ -125,6 +125,13 @@ $(document).ready(function() {
 				search = search + '</form>';
 	}
 
+	if(googleimages) {
+		var search = search + '<form method="get" action="http://www.google.com/images">',
+				search = search + '<input type="text" id="i" name="q" size="27" maxlength="255" value="" />',
+				search = search +	'<input type="submit" value="Google Images" />',
+				search = search + '</form>';
+	}
+
 	if(yahoo) {
 		var search = search + '<form method="get" action="http://search.yahoo.com/search">',
 				search = search + '<input type="text" id="y" name="p" size="35" maxlength="255" value="" />',

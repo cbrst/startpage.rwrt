@@ -44,6 +44,7 @@ $(document).ready(function() {
 
 	// Enable/disable various search engines
 	google = true;
+	googleimages = false;
 	yahoo = false;
 	wikipedia = false;
 	dictcc = false;
