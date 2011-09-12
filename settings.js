@@ -52,4 +52,7 @@ $(document).ready(function() {
 	flickr = false;
 	deviantart = false;
 
+  // Focus on searchbox when opening
+    focusSearch = false;
+
 });
