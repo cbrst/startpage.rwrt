@@ -75,6 +75,13 @@ ul li {
 	right: 2em;															/*		from right edge */
 }
 
+#clock {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	font-size: 2em;
+}
+
 form {
 	margin-top: 1em;
 }
