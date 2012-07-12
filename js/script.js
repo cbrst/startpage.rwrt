@@ -90,10 +90,10 @@ $(document).ready(function() {
 		if(!line)
 			continue;
 
-		/*  If it doesn't start with http,  *\
-		|*  it must be a seperator          *|
-		\*==================================*/
-		if(line.substr(0,4) != 'http') {
+		/*  If it doesn't contain "://",  *\
+		|*  it's not a URL                *|
+		\*================================*/
+		if(/:\/\//.test(line) != true) {
 			if(count > 1)
 				html = html + '</div>';
 				html = html + '<div class="block"><h1>' + line + '</h1><ul>';
