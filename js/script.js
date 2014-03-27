@@ -62,6 +62,14 @@ function updateClock() {
 
 $(document).ready(function() {
 	
+	var settings;
+	$.ajax({
+		dataType: 'json',
+		url: 'settings.json',
+		async: false,
+		success: function(data) { settings = data; }
+	})
+
 	var shortcuts = {};
 	
 	/*  Get Links  *\
@@ -117,7 +125,7 @@ $(document).ready(function() {
 
 		/*  Add HTML code  *\
 		\*=================*/
-		if(newwindow) {
+		if(settings.navigation.newWindow) {
 			html = html + '<li><a href="' + url + '" target="_blank">' + title + '</a></li>'
 		}
 		else {
@@ -156,7 +164,7 @@ $(document).ready(function() {
 
 	var search = '<div id="searches">';
 	
-	if(google) {
+	if(settings.search.engines.google) {
 		search = search
 		       + '<form method="get" action="http://www.google.com/search">'
 		       + '<input type="text" id="g" name="q" size="34" maxlength="255" value="" />'
@@ -164,7 +172,7 @@ $(document).ready(function() {
 		       + '</form>';
 	  }
 
-	if(googleimages) {
+	if(settings.search.engines.googleimages) {
 		search = search
 		       + '<form method="get" action="http://www.google.com/images">'
 		       + '<input type="text" id="i" name="q" size="27" maxlength="255" value="" />'
@@ -172,7 +180,7 @@ $(document).ready(function() {
 		       + '</form>';
 	}
 
-	if(yahoo) {
+	if(settings.search.engines.yahoo) {
 		search = search
 		       + '<form method="get" action="http://search.yahoo.com/search">'
 		       + '<input type="text" id="y" name="p" size="35" maxlength="255" value="" />'
@@ -180,7 +188,7 @@ $(document).ready(function() {
 		       + '</form>';
 	}
 
-	if(wikipedia) {
+	if(settings.search.engines.wikipedia) {
 		search = search
 		       + '<form method="get" action="http://www.wikipedia.org/w/index.php">'
 		       + '<input type="text" id="w" name="search" size="31" maxlength="255" value="" />'
@@ -188,7 +196,7 @@ $(document).ready(function() {
 		       + '</form>';
 	}
 
-	if(dictcc) {
+	if(settings.search.engines.dictcc) {
 		search = search
 		       + '<form method="get" action="http://www.dict.cc/">'
 		       + '<input type="text" id="dcc" name="s" size="33" maxlength="255" value="" />'
@@ -196,7 +204,7 @@ $(document).ready(function() {
 		       + '</form>';
 	}
 
-	if(leo) {
+	if(settings.search.engines.leo) {
 		search = search
 		       + '<form method="get" action="http://dict.leo.org/">'
 		       + '<input type="text" id="l" name="search" size="37" maxlength="255" value="" />'
@@ -204,7 +212,7 @@ $(document).ready(function() {
 		       + '</form>';
 	}
 
-	if(flickr) {
+	if(settings.search.engines.flickr) {
 		search = search
 		       + '<form method="get" action="http://www.flickr.com/search">'
 		       + '<input type="text" id="da" name="q" size="34" maxlength="255" value="" />'
@@ -212,7 +220,7 @@ $(document).ready(function() {
 		       + '</form>';
 	}
 
-	if(deviantart) {
+	if(settings.search.engines.deviantart) {
 		search = search
 		       + '<form method="get" action="http://browse.deviantart.com/">'
 		       + '<input type="text" id="da" name="q" size="30" maxlength="255" value="" />'
@@ -225,7 +233,7 @@ $(document).ready(function() {
 	/*  Add to page  *\
 	\*===============*/
 	$('body').append(search);
-	if(focusSearch) {
+	if(settings.search.focusSearch) {
 		var searchDiv = document.getElementById ('searches');
 		$(searchDiv.firstChild.firstChild).focus();
 	}
@@ -233,7 +241,7 @@ $(document).ready(function() {
 	/*  Clock  *\
 	\*=========*/
 
-	if(showClock) {
+	if(settings.clock.showClock) {
 		// Add empty '#clock' div
 		$('body').append('<div id="clock"></div>');
 
@@ -249,7 +257,7 @@ $(document).ready(function() {
 			event.stopPropagation();
 		});
 		if(shortcuts[event.key]) {
-			if(newwindow) {
+			if(settings.navigation.newWindow) {
 				window.open(shortcuts[event.key]);
 			}
 			else {

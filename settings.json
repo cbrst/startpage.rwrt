@@ -1,0 +1,23 @@
+{
+	"navigation": {
+		"newWindow": true
+	},
+	
+	"search": {
+		"engines": {
+			"google": true,
+			"googleimages": false,
+			"yahoo": false,
+			"wikipedia": false,
+			"dictcc": false,
+			"leo": false,
+			"flickr": false,
+			"deviantart": false
+		},
+		"focusSearch": false
+	},
+	
+	"clock": {
+		"showClock": true
+	}
+}
