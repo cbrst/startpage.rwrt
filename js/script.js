@@ -62,6 +62,8 @@ function updateClock() {
 
 $(document).ready(function() {
 	
+	var shortcuts = {};
+	
 	/*  Get Links  *\
 	\*=============*/
 	var linkString = $('body').text();
@@ -106,6 +108,11 @@ $(document).ready(function() {
 		var lineArray = line.split(" || ");
 		var url = lineArray[0];
 		var title = lineArray[1];
+		
+		/*  Add to shortcuts array *\
+		\*=========================*/
+		if(lineArray[2])
+			shortcuts[lineArray[2]] = url;
 
 		/*  Add HTML code  *\
 		\*=================*/
@@ -222,5 +229,17 @@ $(document).ready(function() {
 		// Update clock
    	setInterval('updateClock()', 1000);
 	}
+
+
+	/*  Keybindings  *\
+	\*===============*/
+	$('body').keypress(function(event) {
+		if(shortcuts[event.key]) {
+			if(newwindow)
+				window.open(shortcuts[event.key]);
+			else
+				window.location.replace(shortcuts[event.key]);
+		}
+	})
 
 });
