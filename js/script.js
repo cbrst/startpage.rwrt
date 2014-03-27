@@ -168,7 +168,7 @@ $(document).ready(function() {
 		search = search
 		       + '<form method="get" action="http://www.google.com/images">'
 		       + '<input type="text" id="i" name="q" size="27" maxlength="255" value="" />'
-		       +	'<input type="submit" value="Google Images" />'
+		       + '<input type="submit" value="Google Images" />'
 		       + '</form>';
 	}
 
@@ -245,6 +245,9 @@ $(document).ready(function() {
 	/*  Keybindings  *\
 	\*===============*/
 	$('body').keypress(function(event) {
+		$('input').keypress(function(event) {
+			event.stopPropagation();
+		});
 		if(shortcuts[event.key]) {
 			if(newwindow) {
 				window.open(shortcuts[event.key]);
@@ -253,6 +256,6 @@ $(document).ready(function() {
 				window.location.replace(shortcuts[event.key]);
 			}
 		}
-	})
+	});
 
 });
