@@ -89,18 +89,18 @@ $(document).ready(function() {
 		var line = jQuery.trim(linkArray[i]);
 
 		// If line is empty, skip
-		if(!line)
-			continue;
+		if(!line) continue;
 
 		/*  If it doesn't contain "://",  *\
 		|*  it's not a URL                *|
 		\*================================*/
 		if(/:\/\//.test(line) != true) {
-			if(count > 1)
+			if(count > 1) {
 				html = html + '</div>';
-				html = html + '<div class="block"><h1>' + line + '</h1><ul>';
-				count++;
-				continue;
+			}
+			html = html + '<div class="block"><h1>' + line + '</h1><ul>';
+			count++;
+			continue;
 		}
 
 		/*  Split URL and Title  *\
@@ -111,15 +111,18 @@ $(document).ready(function() {
 		
 		/*  Add to shortcuts array *\
 		\*=========================*/
-		if(lineArray[2])
+		if(lineArray[2]) {
 			shortcuts[lineArray[2]] = url;
+		}
 
 		/*  Add HTML code  *\
 		\*=================*/
-		if(newwindow)
+		if(newwindow) {
 			html = html + '<li><a href="' + url + '" target="_blank">' + title + '</a></li>'
-		else
+		}
+		else {
 			html = html + '<li><a href="' + url + '">' + title + '</a></li>'
+		}
 	}
 
 	/*  Add generated content to page  *\
@@ -154,59 +157,67 @@ $(document).ready(function() {
 	var search = '<div id="searches">';
 	
 	if(google) {
-		var search = search + '<form method="get" action="http://www.google.com/search">',
-		    search = search + '<input type="text" id="g" name="q" size="34" maxlength="255" value="" />',
-		    search = search + '<input type="submit" value="Google" />',
-		    search = search + '</form>';
+		search = search
+		       + '<form method="get" action="http://www.google.com/search">'
+		       + '<input type="text" id="g" name="q" size="34" maxlength="255" value="" />'
+		       + '<input type="submit" value="Google" />'
+		       + '</form>';
 	  }
 
 	if(googleimages) {
-		var search = search + '<form method="get" action="http://www.google.com/images">',
-		    search = search + '<input type="text" id="i" name="q" size="27" maxlength="255" value="" />',
-		    search = search +	'<input type="submit" value="Google Images" />',
-		    search = search + '</form>';
+		search = search
+		       + '<form method="get" action="http://www.google.com/images">'
+		       + '<input type="text" id="i" name="q" size="27" maxlength="255" value="" />'
+		       +	'<input type="submit" value="Google Images" />'
+		       + '</form>';
 	}
 
 	if(yahoo) {
-		var search = search + '<form method="get" action="http://search.yahoo.com/search">',
-		    search = search + '<input type="text" id="y" name="p" size="35" maxlength="255" value="" />',
-		    search = search +	'<input type="submit" value="Yahoo" />',
-		    search = search + '</form>';
+		search = search
+		       + '<form method="get" action="http://search.yahoo.com/search">'
+		       + '<input type="text" id="y" name="p" size="35" maxlength="255" value="" />'
+		       +	'<input type="submit" value="Yahoo" />'
+		       + '</form>';
 	}
 
 	if(wikipedia) {
-		var search = search + '<form method="get" action="http://www.wikipedia.org/w/index.php">',
-		    search = search + '<input type="text" id="w" name="search" size="31" maxlength="255" value="" />',
-		    search = search +	'<input type="submit" value="Wikipedia" />',
-		    search = search + '</form>';
+		search = search
+		       + '<form method="get" action="http://www.wikipedia.org/w/index.php">'
+		       + '<input type="text" id="w" name="search" size="31" maxlength="255" value="" />'
+		       +	'<input type="submit" value="Wikipedia" />'
+		       + '</form>';
 	}
 
 	if(dictcc) {
-		var search = search + '<form method="get" action="http://www.dict.cc/">',
-		    search = search + '<input type="text" id="dcc" name="s" size="33" maxlength="255" value="" />',
-		    search = search +	'<input type="submit" value="dict.cc" />',
-		    search = search + '</form>';
+		search = search
+		       + '<form method="get" action="http://www.dict.cc/">'
+		       + '<input type="text" id="dcc" name="s" size="33" maxlength="255" value="" />'
+		       +	'<input type="submit" value="dict.cc" />'
+		       + '</form>';
 	}
 
 	if(leo) {
-		var search = search + '<form method="get" action="http://dict.leo.org/">',
-		    search = search + '<input type="text" id="l" name="search" size="37" maxlength="255" value="" />',
-		    search = search +	'<input type="submit" value="leo" />',
-		    search = search + '</form>';
+		search = search
+		       + '<form method="get" action="http://dict.leo.org/">'
+		       + '<input type="text" id="l" name="search" size="37" maxlength="255" value="" />'
+		       +	'<input type="submit" value="leo" />'
+		       + '</form>';
 	}
 
 	if(flickr) {
-		var search = search + '<form method="get" action="http://www.flickr.com/search">',
-		    search = search + '<input type="text" id="da" name="q" size="34" maxlength="255" value="" />',
-		    search = search +	'<input type="submit" value="flickr" />',
-		    search = search + '</form>';
+		search = search
+		       + '<form method="get" action="http://www.flickr.com/search">'
+		       + '<input type="text" id="da" name="q" size="34" maxlength="255" value="" />'
+		       +	'<input type="submit" value="flickr" />'
+		       + '</form>';
 	}
 
 	if(deviantart) {
-		var search = search + '<form method="get" action="http://browse.deviantart.com/">',
-		    search = search + '<input type="text" id="da" name="q" size="30" maxlength="255" value="" />',
-		    search = search +	'<input type="submit" value="deviantART" />',
-		    search = search + '</form>';
+		search = search
+		       + '<form method="get" action="http://browse.deviantart.com/">'
+		       + '<input type="text" id="da" name="q" size="30" maxlength="255" value="" />'
+		       +	'<input type="submit" value="deviantART" />'
+		       + '</form>';
 	}
 
 	var search = search + '</div>';
@@ -227,7 +238,7 @@ $(document).ready(function() {
 		$('body').append('<div id="clock"></div>');
 
 		// Update clock
-   	setInterval('updateClock()', 1000);
+		setInterval('updateClock()', 1000);
 	}
 
 
@@ -235,10 +246,12 @@ $(document).ready(function() {
 	\*===============*/
 	$('body').keypress(function(event) {
 		if(shortcuts[event.key]) {
-			if(newwindow)
+			if(newwindow) {
 				window.open(shortcuts[event.key]);
-			else
+			}
+			else {
 				window.location.replace(shortcuts[event.key]);
+			}
 		}
 	})
 
