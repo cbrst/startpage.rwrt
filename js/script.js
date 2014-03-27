@@ -60,6 +60,14 @@ function updateClock() {
 	$("#clock").html(currentTimeString);
 }
 
+function searchBox(url, name, placeholder) {
+	var string = '<form method="get" action="' + url + '">'
+	           + '<input type="text" id="g" name="' + name + '" placeholder="' + placeholder + '" maxlength="255" value="">'
+	           + '<input type="submit" value="Go">'
+	           + '</form>';
+	return string;
+}
+
 $(document).ready(function() {
 	
 	var settings;
@@ -163,72 +171,13 @@ $(document).ready(function() {
 	\*==================*/
 
 	var search = '<div id="searches">';
-	
-	if(settings.search.engines.google) {
-		search = search
-		       + '<form method="get" action="http://www.google.com/search">'
-		       + '<input type="text" id="g" name="q" size="34" maxlength="255" value="" />'
-		       + '<input type="submit" value="Google" />'
-		       + '</form>';
-	  }
 
-	if(settings.search.engines.googleimages) {
-		search = search
-		       + '<form method="get" action="http://www.google.com/images">'
-		       + '<input type="text" id="i" name="q" size="27" maxlength="255" value="" />'
-		       + '<input type="submit" value="Google Images" />'
-		       + '</form>';
+	for (var i = 0; i < settings.search.engines.length; i++) {
+		var engine = settings.search.engines[i];
+		search = search + searchBox(engine[0], engine[1], engine[2]);
 	}
 
-	if(settings.search.engines.yahoo) {
-		search = search
-		       + '<form method="get" action="http://search.yahoo.com/search">'
-		       + '<input type="text" id="y" name="p" size="35" maxlength="255" value="" />'
-		       +	'<input type="submit" value="Yahoo" />'
-		       + '</form>';
-	}
-
-	if(settings.search.engines.wikipedia) {
-		search = search
-		       + '<form method="get" action="http://www.wikipedia.org/w/index.php">'
-		       + '<input type="text" id="w" name="search" size="31" maxlength="255" value="" />'
-		       +	'<input type="submit" value="Wikipedia" />'
-		       + '</form>';
-	}
-
-	if(settings.search.engines.dictcc) {
-		search = search
-		       + '<form method="get" action="http://www.dict.cc/">'
-		       + '<input type="text" id="dcc" name="s" size="33" maxlength="255" value="" />'
-		       +	'<input type="submit" value="dict.cc" />'
-		       + '</form>';
-	}
-
-	if(settings.search.engines.leo) {
-		search = search
-		       + '<form method="get" action="http://dict.leo.org/">'
-		       + '<input type="text" id="l" name="search" size="37" maxlength="255" value="" />'
-		       +	'<input type="submit" value="leo" />'
-		       + '</form>';
-	}
-
-	if(settings.search.engines.flickr) {
-		search = search
-		       + '<form method="get" action="http://www.flickr.com/search">'
-		       + '<input type="text" id="da" name="q" size="34" maxlength="255" value="" />'
-		       +	'<input type="submit" value="flickr" />'
-		       + '</form>';
-	}
-
-	if(settings.search.engines.deviantart) {
-		search = search
-		       + '<form method="get" action="http://browse.deviantart.com/">'
-		       + '<input type="text" id="da" name="q" size="30" maxlength="255" value="" />'
-		       +	'<input type="submit" value="deviantART" />'
-		       + '</form>';
-	}
-
-	var search = search + '</div>';
+	search = search + '</div>';
 
 	/*  Add to page  *\
 	\*===============*/
