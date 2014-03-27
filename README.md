@@ -15,7 +15,7 @@ Title
 http://www.example.com || Title || Keybinding
   ^                         ^           ^
   |                         |           `---------,
-Where you want to go ][ What you want to see ][ Keybinding to go there fast
+Where you want to go ][ What you want to see ][ Keybinding to go there fast (optional)
 ```
 
 ### settings.json
