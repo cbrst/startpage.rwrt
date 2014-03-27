@@ -201,18 +201,36 @@ $(document).ready(function() {
 
 	/*  Keybindings  *\
 	\*===============*/
-	$('body').keypress(function(event) {
-		$('input').keypress(function(event) {
-			event.stopPropagation();
-		});
-		if(shortcuts[event.key]) {
-			if(settings.navigation.newWindow) {
-				window.open(shortcuts[event.key]);
-			}
-			else {
-				window.location.replace(shortcuts[event.key]);
+
+	var typed = '';
+	var shortcutArray = Object.keys(shortcuts);
+		
+		// Check if we typed a keybinding
+		function hasSubstring(element) {
+			var index = typed.indexOf(element);
+			if(index >= 0) {
+				var sliced = typed.slice(index, typed.length);
+				typed = ''; // Clean typed, so that we can watch for the next keybinding
+				if(settings.navigation.newWindow) {
+					window.open(shortcuts[sliced]);
+				} else {
+					window.location.replace(shortcuts[sliced]);
+				}
 			}
 		}
+	// React on keypress
+	$(window).keypress(function(e) {
+		
+		// If we're in an input, we don't want to interpret the keypresses
+		$('input').keypress(function(e) {
+			e.stopPropagation();
+		});
+		
+		// Keep track of pressed keys
+		typed = typed + e.key;
+
+
+		shortcutArray.some(hasSubstring);
 	});
 
 });
