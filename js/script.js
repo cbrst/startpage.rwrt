@@ -205,19 +205,20 @@ $(document).ready(function() {
 	var typed = '';
 	var shortcutArray = Object.keys(shortcuts);
 		
-		// Check if we typed a keybinding
-		function hasSubstring(element) {
-			var index = typed.indexOf(element);
-			if(index >= 0) {
-				var sliced = typed.slice(index, typed.length);
-				typed = ''; // Clean typed, so that we can watch for the next keybinding
-				if(settings.navigation.newWindow) {
-					window.open(shortcuts[sliced]);
-				} else {
-					window.location.replace(shortcuts[sliced]);
-				}
+	// Check if we typed a keybinding
+	function hasSubstring(element) {
+		var index = typed.indexOf(element);
+		if(index >= 0) {
+			var sliced = typed.slice(index, typed.length);
+			typed = ''; // Clean typed, so that we can watch for the next keybinding
+			if(settings.navigation.newWindow) {
+				window.open(shortcuts[sliced]);
+			} else {
+				window.location.replace(shortcuts[sliced]);
 			}
 		}
+	}
+
 	// React on keypress
 	$(window).keypress(function(e) {
 		
