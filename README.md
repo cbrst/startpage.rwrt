@@ -20,8 +20,8 @@ Where you want to go ][ What you want to see ][ Keybinding to go there fast (opt
 
 The keybindings support multi-stroke bindings, so you can use ```gm``` to go to Gmail, ```gp``` to go to Google+, and so on. But beware! Shorter keybindings will get triggered first, so if you already use ```g``` to go to Google, you'll never be able to input ```gm``` or ```gp```.
 
-### settings.json
-I've recently switched from a JS to JSON configuration. I admit it's a bit more verbose, but don't fear, I'm here!
+### settings
+Due to some issues with Chrome's XMLHttpRequest, the settings have been moved to ```js/script.js```. They can be found right at the top of the file.
 
 #### navigation
 This only has one setting: ```"newWindow"```. Set to true to have links open in a new tab/window, false to use the same window.
