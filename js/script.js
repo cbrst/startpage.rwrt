@@ -32,6 +32,32 @@
 	THE SOFTWARE.
 */
 
+/* Settings *\
+\*==========*/
+var settings = {
+	"navigation": {
+		"newWindow": true
+	},
+	
+	"search": {
+		"engines": [
+			["http://www.google.com/search", "q", "Google"],
+			["http://www.google.com/images", "q", "Google Images"],
+			["http://search.yahoo.com/search", "p", "Yahoo"],
+			["http://wikipedia.org/w/index.php", "w", "Wikipedia"],
+			["http://www.dict.cc", "s", "dict.cc"],
+			["http://dict.leo.org", "search", "leo"],
+			["http://www.flickr.com/search", "q", "flickr"],
+			["http://browse.deviantart.com/", "q", "deviantArt"]
+		],
+		"focusSearch": false
+	},
+	
+	"clock": {
+		"showClock": true
+	}
+};
+
 /*  Clock  *\
 \*=========*/
 function updateClock() {
@@ -69,14 +95,6 @@ function searchBox(url, name, placeholder) {
 }
 
 $(document).ready(function() {
-	
-	var settings;
-	$.ajax({
-		dataType: 'json',
-		url: 'settings.json',
-		async: false,
-		success: function(data) { settings = data; }
-	})
 
 	var shortcuts = {};
 	
