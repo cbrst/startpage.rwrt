@@ -146,7 +146,7 @@ $(document).ready(function() {
 		/*  Add to shortcuts array *\
 		\*=========================*/
 		if(lineArray[2]) {
-			shortcuts[lineArray[2]] = url;
+			shortcuts[lineArray[2]] = "'"+url+"'";
 		}
 
 		/*  Add HTML code  *\
@@ -195,13 +195,10 @@ $(document).ready(function() {
 		search = search + searchBox(engine[0], engine[1], engine[2]);
 		if(engine[3]) {
 			var jsSearchUrl=engine[0]+"?"+engine[1]+"=";
-			var jsSearchPrompt="prompt('Search%20"+engine[2]+":')";
-			var jsSearch="javascript:window.open('"+jsSearchUrl+"'+"+jsSearchPrompt+");";
+			var jsSearchPrompt="prompt('Search "+engine[2]+":')";
 			var jsSearch="'"+jsSearchUrl+"'+"+jsSearchPrompt;
-                        shortcuts[engine[3]] = jsSearch;
-		
-                }
-
+			shortcuts[engine[3]] = jsSearch;
+      }
 	}
 
 	search = search + '</div>';
