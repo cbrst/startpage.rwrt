@@ -253,7 +253,7 @@ $(document).ready(function() {
 		$('input').keypress(function(e) {
 			e.stopPropagation();
 		});
-	        var nowDate = new Date();
+		var nowDate = new Date();
 		var diffMs = (nowDate - typedDate);
 		if (diffMs > 1000) {	
 			typed = String.fromCharCode(e.which);
