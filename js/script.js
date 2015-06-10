@@ -41,14 +41,14 @@ var settings = {
 	
 	"search": {
 		"engines": [
-			["http://www.google.com/search", "q", "Google"],
-			["http://www.google.com/images", "q", "Google Images"],
-			["http://search.yahoo.com/search", "p", "Yahoo"],
-			["http://wikipedia.org/w/index.php", "w", "Wikipedia"],
-			["http://www.dict.cc", "s", "dict.cc"],
-			["http://dict.leo.org", "search", "leo"],
-			["http://www.flickr.com/search", "q", "flickr"],
-			["http://browse.deviantart.com/", "q", "deviantArt"]
+			["http://www.google.com/search", "q", "Google", "sg"],
+			["http://www.google.com/images", "q", "Google Images", "si"],
+			["http://search.yahoo.com/search", "p", "Yahoo", "sy"],
+			["http://wikipedia.org/w/index.php", "w", "Wikipedia", "sw"],
+			["http://www.dict.cc", "s", "dict.cc", "sd"],
+			["http://dict.leo.org", "search", "leo", "sl"],
+			["http://www.flickr.com/search", "q", "flickr", "sf"],
+			["http://browse.deviantart.com/", "q", "deviantArt", "sa"]
 		],
 		"focusSearch": false
 	},
@@ -193,6 +193,15 @@ $(document).ready(function() {
 	for (var i = 0; i < settings.search.engines.length; i++) {
 		var engine = settings.search.engines[i];
 		search = search + searchBox(engine[0], engine[1], engine[2]);
+		if(engine[3]) {
+			var jsSearchUrl=engine[0]+"?"+engine[1]+"=";
+			var jsSearchPrompt="prompt('Search%20"+engine[2]+":')";
+			var jsSearch="javascript:window.open('"+jsSearchUrl+"'+"+jsSearchPrompt+");";
+			var jsSearch="'"+jsSearchUrl+"'+"+jsSearchPrompt;
+                        shortcuts[engine[3]] = jsSearch;
+		
+                }
+
 	}
 
 	search = search + '</div>';
@@ -222,6 +231,7 @@ $(document).ready(function() {
 
 	var typed = '';
 	var shortcutArray = Object.keys(shortcuts);
+	var typedDate = new Date();
 		
 	// Check if we typed a keybinding
 	function hasSubstring(element) {
@@ -230,25 +240,27 @@ $(document).ready(function() {
 			var sliced = typed.slice(index, typed.length);
 			typed = ''; // Clean typed, so that we can watch for the next keybinding
 			if(settings.navigation.newWindow) {
-				window.open(shortcuts[sliced]);
+				window.open(eval(shortcuts[sliced]));
 			} else {
-				window.location.replace(shortcuts[sliced]);
+				window.location.replace(eval(shortcuts[sliced]));
 			}
 		}
 	}
 
 	// React on keypress
 	$(window).keypress(function(e) {
-		
 		// If we're in an input, we don't want to interpret the keypresses
 		$('input').keypress(function(e) {
 			e.stopPropagation();
 		});
-		
-		// Keep track of pressed keys
-		typed = typed + e.key;
-
-
+	        var nowDate = new Date();
+		var diffMs = (nowDate - typedDate);
+		if (diffMs > 1000) {	
+			typed = String.fromCharCode(e.which);
+		} else {
+			typed = typed + String.fromCharCode(e.which);
+		}
+		typedDate = new Date();
 		shortcutArray.some(hasSubstring);
 	});
 
