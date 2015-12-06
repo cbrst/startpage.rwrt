@@ -55,6 +55,10 @@ var settings = {
 	
 	"clock": {
 		"showClock": true
+	},
+
+	"animation": {
+		"hideLinks": true
 	}
 };
 
@@ -170,19 +174,21 @@ $(document).ready(function() {
 	
 	/*  Hide lists  *\
 	\*==============*/
-	$('ul').slideUp();
+	if (settings.animation.hideLinks) {
+		$('ul').slideUp();
 
-	/*  Show on hover  *\
-	\*=================*/
-	$('.block').mouseenter(function() {
-		$('ul', this).slideDown();
-	});
+		/*  Show on hover  *\
+		\*=================*/
+		$('.block').mouseenter(function() {
+			$('ul', this).slideDown();
+		});
 
-	/*  Hide on unhover  *\
-	\*===================*/
-	$('.block').mouseleave(function() {
-		$('ul', this).slideUp();
-	});
+		/*  Hide on unhover  *\
+		\*===================*/
+		$('.block').mouseleave(function() {
+			$('ul', this).slideUp();
+		});
+	}
 
 
 	/*  Search Engines  *\
