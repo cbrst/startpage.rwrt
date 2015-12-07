@@ -52,7 +52,7 @@ a:hover {
 	border-left: 1px solid #999;						/* Left border of link block */
 	float: left;
 	padding: 1em;														/* Padding around link block */
-	width: 140px;														/* Link block width */
+	width: 160px;														/* Link block width */
 }
 
 h1 {
@@ -67,6 +67,13 @@ ul {
 ul li {
 	list-style: none;
 	padding: 5px;
+}
+
+li img {
+	width: 16px;
+	border-width: 0;
+	margin: 5px;
+	vertical-align: middle;
 }
 
 #searches {

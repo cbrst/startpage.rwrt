@@ -12,10 +12,10 @@ The Section Heading. This will start a new block.
   I
   V
 Title
-http://www.example.com || Title || Keybinding
-  ^                         ^           ^
-  |                         |           `---------,
-Where you want to go ][ What you want to see ][ Keybinding to go there fast (optional)
+http://www.example.com || Title || Keybinding || Icon URL
+  ^                         ^           ^             ^
+  |                         |           `---------,   `-------------------------------------,
+Where you want to go ][ What you want to see ][ Keybinding to go there fast (optional) ][ URL of image to display with link (optional) ]
 ```
 
 The keybindings support multi-stroke bindings, so you can use ```gm``` to go to Gmail, ```gp``` to go to Google+, and so on. But beware! Shorter keybindings will get triggered first, so if you already use ```g``` to go to Google, you'll never be able to input ```gm``` or ```gp```.
@@ -28,6 +28,13 @@ This only has one setting: ```"newWindow"```. Set to true to have links open in 
 
 #### clock
 Again, this has one setting: ```"showClock"```. True or false.
+
+#### animation
+This only has one setting: ```"hideLinks"```. Set to true to have links being shown/hidden automatically on
+mouse events, false to see them always.
+
+#### icons
+This only has one setting: ```"showIcons"```. Set to true to see configured icons next to links, false to hide them.
 
 #### search
 This is where it gets interesting. There's two keys:

@@ -55,6 +55,14 @@ var settings = {
 	
 	"clock": {
 		"showClock": true
+	},
+
+	"animation": {
+		"hideLinks": true
+	},
+
+	"icons": {
+		"showIcons": true
 	}
 };
 
@@ -137,11 +145,16 @@ $(document).ready(function() {
 			continue;
 		}
 
-		/*  Split URL and Title  *\
+		/*  Split URL, Title and icon (if any) *\
 		\*=======================*/
 		var lineArray = line.split(" || ");
 		var url = lineArray[0];
 		var title = lineArray[1];
+		
+		var icon = "";
+		if (lineArray[3]) {
+			icon = lineArray[3];
+		}
 		
 		/*  Add to shortcuts array *\
 		\*=========================*/
@@ -149,13 +162,20 @@ $(document).ready(function() {
 			shortcuts[lineArray[2]] = "'"+url+"'";
 		}
 
+		/* Prepares HTML code for showing icon *\
+		\*=====================================*/
+		var iconHtml = '';
+		if (settings.icons.showIcons && icon) {
+			iconHtml = '<img src="' + icon + '"/>'; 
+		}
+
 		/*  Add HTML code  *\
 		\*=================*/
 		if(settings.navigation.newWindow) {
-			html = html + '<li><a href="' + url + '" target="_blank">' + title + '</a></li>'
+			html = html + '<li>' + iconHtml + '<a href="' + url + '" target="_blank">' + title + '</a></li>'
 		}
 		else {
-			html = html + '<li><a href="' + url + '">' + title + '</a></li>'
+			html = html + '<li>' + iconHtml + '<a href="' + url + '">' + title + '</a></li>'
 		}
 	}
 
@@ -170,19 +190,21 @@ $(document).ready(function() {
 	
 	/*  Hide lists  *\
 	\*==============*/
-	$('ul').slideUp();
+	if (settings.animation.hideLinks) {
+		$('ul').slideUp();
 
-	/*  Show on hover  *\
-	\*=================*/
-	$('.block').mouseenter(function() {
-		$('ul', this).slideDown();
-	});
+		/*  Show on hover  *\
+		\*=================*/
+		$('.block').mouseenter(function() {
+			$('ul', this).slideDown();
+		});
 
-	/*  Hide on unhover  *\
-	\*===================*/
-	$('.block').mouseleave(function() {
-		$('ul', this).slideUp();
-	});
+		/*  Hide on unhover  *\
+		\*===================*/
+		$('.block').mouseleave(function() {
+			$('ul', this).slideUp();
+		});
+	}
 
 
 	/*  Search Engines  *\
