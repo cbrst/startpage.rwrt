@@ -196,13 +196,13 @@ $(document).ready(function() {
 		/*  Show on hover  *\
 		\*=================*/
 		$('.block').mouseenter(function() {
-			$('ul', this).slideDown();
+			$('ul', this).stop().slideDown();
 		});
 
 		/*  Hide on unhover  *\
 		\*===================*/
 		$('.block').mouseleave(function() {
-			$('ul', this).slideUp();
+			$('ul', this).stop().slideUp();
 		});
 	}
 
